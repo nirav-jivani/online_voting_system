@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="electionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="candidate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="age" Type="int" Nullable="false" />
+    <Property Name="sign" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="photo" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="vote" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="10" />
+    <Property Name="vote" Type="bigint" />
+  </EntityType>
+  <EntityType Name="voter">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="age" Type="int" />
+    <Property Name="number" Type="nchar" MaxLength="10" />
+    <Property Name="sign" Type="nvarchar" MaxLength="50" />
+    <Property Name="photo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="electionModelStoreContainer">
+    <EntitySet Name="candidate" EntityType="Self.candidate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="voter" EntityType="Self.voter" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
