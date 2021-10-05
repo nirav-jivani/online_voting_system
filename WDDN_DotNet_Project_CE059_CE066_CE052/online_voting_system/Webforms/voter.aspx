@@ -1,6 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="voter.aspx.cs" Inherits="online_voting_system.voter" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
                <div>
+                   <br />
+                   <br />
+                   <asp:Label ID="Label6" runat="server" ForeColor="#009900"></asp:Label>
             <br />
             <br />
             </div>

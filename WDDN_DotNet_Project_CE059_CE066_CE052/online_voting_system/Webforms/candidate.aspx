@@ -54,6 +54,6 @@
             <br />
                    <br />
                    <br />
-                   <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                   <asp:Label ID="Label1" runat="server" Text="Label" ForeColor="#009900"></asp:Label>
         </div>
     </asp:Content>

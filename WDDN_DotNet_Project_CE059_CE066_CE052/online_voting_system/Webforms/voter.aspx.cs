@@ -30,8 +30,8 @@ namespace online_voting_system
             string fn1 = System.IO.Path.GetFileName(FileUpload2.PostedFile.FileName) + DateTime.Now;
             if ((FileUpload1.PostedFile != null) && (FileUpload1.PostedFile.ContentLength > 0))
             { 
-                    string l1 = Server.MapPath("~\\files\\voter\\signs") + "\\" + fn;
-                    string l2 = Server.MapPath("~\\files\\voter\\photos") + "\\" + fn1;
+                    string l1 = Server.MapPath("~\\files\\voter\\signs") + "\\" + fn + ".jpg";
+                    string l2 = Server.MapPath("~\\files\\voter\\photos") + "\\" + fn1 + ".jpg";
                     FileUpload1.PostedFile.SaveAs(l1);
                     FileUpload2.PostedFile.SaveAs(l2);
             }
@@ -48,6 +48,7 @@ namespace online_voting_system
 
             vs.Voters.Add(temp);
             vs.SaveChanges();
+            Label6.Text = temp.name + " added to the voting list";
         }
     }
 }

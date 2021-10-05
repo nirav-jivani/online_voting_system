@@ -20,6 +20,7 @@ namespace online_voting_system
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Label1.Visible = false;
             try {
                 ElectionDbContext el = new ElectionDbContext();
             Election dates = el.Elections.FirstOrDefault();
@@ -51,7 +52,8 @@ namespace online_voting_system
                     string l2 = Server.MapPath("~\\files\\candidate\\photos") + "\\" + fn1+".jpg";
                     FileUpload1.PostedFile.SaveAs(l1);
                     FileUpload2.PostedFile.SaveAs(l2);
-                    Label1.Text = "uploaded";
+                    
+                    
                 }
                 catch(Exception cec)
                 {
@@ -74,8 +76,9 @@ namespace online_voting_system
 
             db.Candidates.Add(s);
             db.SaveChangesAsync();
-
-
+            Label1.Visible = true;
+            Label1.Text = s.name + " added to the candidated list.";
         }
+
     }
 }

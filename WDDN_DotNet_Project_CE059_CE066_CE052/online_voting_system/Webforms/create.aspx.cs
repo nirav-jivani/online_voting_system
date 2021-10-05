@@ -12,7 +12,7 @@ namespace online_voting_system
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Label1.Visible = false;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -38,7 +38,16 @@ namespace online_voting_system
                 db.Elections.Add(e1);
                 db.SaveChangesAsync();
 
-                Label1.Text = "Election created sucessfully....";
+                try
+                {
+                    Label1.Visible = true;
+                    Label1.Text = "Election created sucessfully....";
+                }
+                catch(Exception ex)
+                {
+
+                }
+                
             }
 
         }

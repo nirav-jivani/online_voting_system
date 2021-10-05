@@ -15,6 +15,8 @@ namespace online_voting_system
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Image1.Visible = false;
+            Image2.Visible = false;
             ElectionDbContext el = new ElectionDbContext();
             Election dates = el.Elections.FirstOrDefault();
             try
@@ -39,6 +41,7 @@ namespace online_voting_system
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
+           
             string maincon = ConfigurationManager.ConnectionStrings["electionConnectionString"].ConnectionString;
             SqlConnection sqlq = new SqlConnection(maincon);
             string query = "select id,name,age from [dbo].[Candidates] a where a.name = '" + DropDownList1.SelectedValue + "'";
@@ -52,7 +55,8 @@ namespace online_voting_system
             sqlq.Close();
 
             ElectionDbContext cs = new ElectionDbContext();
-            var t = cs.Candidates.Where(s => s.name == DropDownList1.SelectedValue).FirstOrDefault(); 
+            var t = cs.Candidates.Where(s => s.name == DropDownList1.SelectedValue).FirstOrDefault();
+            Image1.Visible = true;
             Image1.ImageUrl = "~/files/candidate/photos/"+t.photo+".jpg";
             
         }
@@ -61,30 +65,18 @@ namespace online_voting_system
         {
             if (ViewState["cs"].Equals("true"))
             {
-                string maincon = ConfigurationManager.ConnectionStrings["electionConnectionString"].ConnectionString;
-                SqlConnection sqlq = new SqlConnection(maincon);
-                string query = "select vote from [dbo].[Candidates] a where a.name = '" + DropDownList1.SelectedValue + "'";
-                sqlq.Open();
-                SqlCommand sa = new SqlCommand(query, sqlq);
-                SqlDataReader sn = sa.ExecuteReader();
-                string vo = "";
-                while (sn.Read())
-                {
-                    vo += sn.GetValue(0).ToString();
-                }
-                int v = int.Parse(vo);
-                string query1 = "update [dbo].[Candidates] SET vote=" + (v + 1) + " where name = '" + DropDownList1.SelectedValue + "'";
-                SqlCommand sa1 = new SqlCommand(query1, sqlq);
-                sa1.ExecuteNonQuery();
-                sqlq.Close();
+                ElectionDbContext dbContext = new ElectionDbContext();
+                var candidate = DropDownList1.SelectedValue;
+                var currentCandidate = dbContext.Candidates.Where(c=>c.name == candidate).FirstOrDefault<Candidate>();
+                currentCandidate.vote++;
+                dbContext.SaveChanges();
+
                 ViewState["cs"] = "false";
                 Label2.Text = "vote confirmed";
                 ElectionDbContext db = new ElectionDbContext();
-                int id = int.Parse(TextBox1.Text);
-                var name = db.Voters.Find(id);
+                int id = int.Parse(DropDownList2.SelectedValue);
+                var name = db.Voters.Where(c=>c.vid == id).FirstOrDefault<Voter>();
                 name.vote = 1;
-                db.Voters.Add(name);
-                db.Entry(name).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
             else
@@ -100,16 +92,27 @@ namespace online_voting_system
 
         protected void check_Click1(object sender, EventArgs e)
         {
+            Label2.Text = "";
             ElectionDbContext db = new ElectionDbContext();
-            if (TextBox1.Text != null)
+            if (DropDownList2.SelectedValue != null)
             {
-                int id = int.Parse(TextBox1.Text);
-                var name = db.Voters.Where(ed => ed.vid == id).FirstOrDefault();
+                int id = -1;
+                try
+                {
+                    id = int.Parse(DropDownList2.SelectedValue);
+                }
+                catch(Exception ex) {
+                    Label1.Text = "Please enter voter id...";
+                }
+                
+                var name = db.Voters.Where(ed => ed.vid == id).FirstOrDefault<Voter>();
                 if (name != null)
                 {
                     if (name.vote != 1)
                     {
                         Label1.Text = name.name;
+                        Image2.Visible = true;
+                        Image2.ImageUrl = "~/files/voter/photos/" + name.photo + ".jpg";
                         ViewState["cs"] = "true";
                         if (name.vote == 1)
                         {
@@ -125,7 +128,7 @@ namespace online_voting_system
                     Label1.Text = "voter not found";
             }
             else
-                Label1.Text = "voter not found";
+                Label1.Text = "Please enter voter id...";
 
         }
     }
