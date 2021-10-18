@@ -6,13 +6,13 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> Online Voting System</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <style>
         form, body{
@@ -26,49 +26,59 @@
 </head>
 <body>
     <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                 </button>
-                    <a class="navbar-brand" runat="server" href="~/Webforms/welcome.aspx">Online voting system</a>
+                </button>
+                <a class="navbar-brand" runat="server" href="~/Webforms/welcome.aspx">Online voting system</a>
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" runat="server" href="~/Webforms/create.aspx">Create Election</a></li>
-                        <li class="nav-item"><a class="nav-link active" runat="server" href="~/Webforms/candidate.aspx">Add Candidate</a></li>
-                        <li class="nav-item"><a class="nav-link active" runat="server" href="~/Webforms/voter.aspx">Add Voter</a></li>
-                        <li class="nav-item"><a class="nav-link active" runat="server" href="~/Webforms/voting.aspx">Election</a></li>
-                        <li class="nav-item"><a class="nav-link active" runat="server" href="~/Webforms/calculate.aspx">Dashborad</a></li>
-                        <li class="nav-item"><a class="nav-link active" runat="server" href="~/Webforms/result.aspx">result</a></li>
+                        <li class="nav-item">
+                            <asp:HyperLink class="nav-link active" runat="server" NavigateUrl="~/Webforms/create.aspx" ID="create_election" Visible="False">Create Election</asp:HyperLink></li>
+                        <li class="nav-item">
+                            <asp:HyperLink class="nav-link active" runat="server" NavigateUrl="~/Webforms/candidate.aspx" ID="add_candidate" Visible="False">Add Candidate</asp:HyperLink></li>
+                        <li class="nav-item">
+                            <asp:HyperLink class="nav-link active" runat="server" NavigateUrl="~/Webforms/voter.aspx" ID="add_voter" Visible="False">Add Voter</asp:HyperLink></li>
+                        <li class="nav-item">
+                            <asp:HyperLink class="nav-link active" runat="server" NavigateUrl="~/Webforms/calculate.aspx" ID="dashborad" Visible="False">Dashborad</asp:HyperLink></li>
+                        <li class="nav-item">
+                            <asp:HyperLink class="nav-link active" runat="server" NavigateUrl="~/Webforms/voting.aspx" ID="election" Visible="False">Election</asp:HyperLink></li>
+                        <li class="nav-item ">
+                            <asp:HyperLink class="nav-link active" runat="server" NavigateUrl="~/Webforms/result.aspx" ID="result" Visible="False">result</asp:HyperLink></li>
+                        <li class="nav-item ">
+                            <asp:LinkButton CssClass="nav-link active" ID="logout_button" runat="server" OnClick="logout_button_Click" Visible="False">Logout</asp:LinkButton></li>
+                        <li class="nav-item ">
                     </ul>
                 </div>
             </div>
         </nav>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                <asp:ScriptManager runat="server">
-                    <Scripts>
-                        <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%><%--Framework Scripts--%>
-                        <asp:ScriptReference Name="MsAjaxBundle" />
-                        <asp:ScriptReference Name="jquery" />
-                        <asp:ScriptReference Name="bootstrap" />
-                        <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
-                        <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
-                        <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
-                        <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
-                        <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
-                        <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
-                        <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
-                        <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
-                        <asp:ScriptReference Name="WebFormsBundle" />
-                        <%--Site Scripts--%>
-                    </Scripts>
-                </asp:ScriptManager>
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - My Voting Application</p>
             </footer>
         </div>
 

@@ -20,6 +20,10 @@ namespace online_voting_system
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["username"] == null)
+            {
+                Response.Redirect("~/Webforms/login.aspx");
+            }
             Label1.Visible = false;
             try {
                 ElectionDbContext el = new ElectionDbContext();

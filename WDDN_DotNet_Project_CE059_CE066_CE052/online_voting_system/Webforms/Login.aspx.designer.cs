@@ -7,83 +7,92 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace online_voting_system
+namespace online_voting_system.Webforms
 {
 
 
-    public partial class SiteMaster
+    public partial class Login
     {
 
         /// <summary>
-        /// create_election control.
+        /// login_error_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink create_election;
+        protected global::System.Web.UI.WebControls.Label login_error_label;
 
         /// <summary>
-        /// add_candidate control.
+        /// login_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink add_candidate;
+        protected global::System.Web.UI.WebControls.Label login_label;
 
         /// <summary>
-        /// add_voter control.
+        /// username_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink add_voter;
+        protected global::System.Web.UI.WebControls.Label username_label;
 
         /// <summary>
-        /// dashborad control.
+        /// username_value control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink dashborad;
+        protected global::System.Web.UI.WebControls.TextBox username_value;
 
         /// <summary>
-        /// election control.
+        /// validator_for_username control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink election;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator validator_for_username;
 
         /// <summary>
-        /// result control.
+        /// password_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink result;
+        protected global::System.Web.UI.WebControls.Label password_label;
 
         /// <summary>
-        /// logout_button control.
+        /// password_value control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton logout_button;
+        protected global::System.Web.UI.WebControls.TextBox password_value;
 
         /// <summary>
-        /// MainContent control.
+        /// password_validator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator password_validator;
+
+        /// <summary>
+        /// login_button control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button login_button;
     }
 }

@@ -12,6 +12,10 @@ namespace online_voting_system
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["username"] == null)
+            {
+                Response.Redirect("~/Webforms/login.aspx");
+            }
             Label1.Visible = false;
         }
 
@@ -19,6 +23,7 @@ namespace online_voting_system
         {
             if (string.Compare(eledate.Text, DateTime.Now.ToString("yyyy/MM/dd")) < 0 || string.Compare(resdate.Text, DateTime.Now.ToString("yyyy/MM/dd")) < 0 || string.Compare(eledate.Text, resdate.Text) > 0)
             {
+                Label1.Visible = true;
                 Label1.Text = "Please Enter the valid date...";
             }
             else
