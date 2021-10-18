@@ -13,6 +13,11 @@ namespace online_voting_system
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["username"] == null)
+            {
+                Response.Redirect("~/Webforms/login.aspx");
+            }
+
             ElectionDbContext el = new ElectionDbContext();
             Election dates = el.Elections.FirstOrDefault();
             if (el == null)

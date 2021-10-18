@@ -127,6 +127,8 @@
     <Content Include="Webforms\create.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Webforms\Login.aspx" />
+    <Content Include="Webforms\Register.aspx" />
     <Content Include="Webforms\result.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -265,9 +267,14 @@
     <Compile Include="Migrations\202110011126069_intial.Designer.cs">
       <DependentUpon>202110011126069_intial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110051639572_RegisterUser model.cs" />
+    <Compile Include="Migrations\202110051639572_RegisterUser model.Designer.cs">
+      <DependentUpon>202110051639572_RegisterUser model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\election.cs" />
     <Compile Include="Models\ElectionDbContext.cs" />
+    <Compile Include="Models\RegisterUser.cs" />
     <Compile Include="Models\Result.cs" />
     <Compile Include="Webforms\calculate.aspx.cs">
       <DependentUpon>calculate.aspx</DependentUpon>
@@ -295,6 +302,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Webforms\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webforms\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Webforms\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webforms\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Webforms\result.aspx.cs">
       <DependentUpon>result.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -384,6 +405,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202110011126069_intial.resx">
       <DependentUpon>202110011126069_intial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110051639572_RegisterUser model.resx">
+      <DependentUpon>202110051639572_RegisterUser model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

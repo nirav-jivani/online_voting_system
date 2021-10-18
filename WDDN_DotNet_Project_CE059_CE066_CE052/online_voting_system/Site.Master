@@ -12,9 +12,8 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
 </head>
 <body>
     <form runat="server">
@@ -42,16 +41,24 @@
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                 </button>
-                    <a class="navbar-brand" runat="server" href="~/Webforms/welcome.aspx">Online voting system</a>
+                </button>
+                <a class="navbar-brand" runat="server" href="~/Webforms/welcome.aspx">Online voting system</a>
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" runat="server" href="~/Webforms/create.aspx">Create Election</a></li>
-                        <li class="nav-item"><a class="nav-link active" runat="server" href="~/Webforms/candidate.aspx">Add Candidate</a></li>
-                        <li class="nav-item"><a class="nav-link active" runat="server" href="~/Webforms/voter.aspx">Add Voter</a></li>
-                        <li class="nav-item"><a class="nav-link active" runat="server" href="~/Webforms/voting.aspx">Election</a></li>
-                        <li class="nav-item"><a class="nav-link active" runat="server" href="~/Webforms/calculate.aspx">Dashborad</a></li>
-                        <li class="nav-item"><a class="nav-link active" runat="server" href="~/Webforms/result.aspx">result</a></li>
+                        <li class="nav-item">
+                            <asp:HyperLink class="nav-link active" runat="server" NavigateUrl="~/Webforms/create.aspx" ID="create_election" Visible="False">Create Election</asp:HyperLink></li>
+                        <li class="nav-item">
+                            <asp:HyperLink class="nav-link active" runat="server" NavigateUrl="~/Webforms/candidate.aspx" ID="add_candidate" Visible="False">Add Candidate</asp:HyperLink></li>
+                        <li class="nav-item">
+                            <asp:HyperLink class="nav-link active" runat="server" NavigateUrl="~/Webforms/voter.aspx" ID="add_voter" Visible="False">Add Voter</asp:HyperLink></li>
+                        <li class="nav-item">
+                            <asp:HyperLink class="nav-link active" runat="server" NavigateUrl="~/Webforms/calculate.aspx" ID="dashborad" Visible="False">Dashborad</asp:HyperLink></li>
+                        <li class="nav-item">
+                            <asp:HyperLink class="nav-link active" runat="server" NavigateUrl="~/Webforms/voting.aspx" ID="election" Visible="False">Election</asp:HyperLink></li>
+                        <li class="nav-item ">
+                            <asp:HyperLink class="nav-link active" runat="server" NavigateUrl="~/Webforms/result.aspx" ID="result" Visible="False">result</asp:HyperLink></li>
+                        <li class="nav-item ">
+                            <asp:LinkButton CssClass="nav-link active" ID="logout_button" runat="server" OnClick="logout_button_Click" Visible="False">Logout</asp:LinkButton></li>
                     </ul>
                 </div>
             </div>
